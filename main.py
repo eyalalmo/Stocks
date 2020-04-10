@@ -18,9 +18,10 @@ for stock in stocks:
 f.close()
 """
 
-f = open('symbols.txt', 'r')
+f = open("symbols.txt", 'r')
 stocks = f.readlines()
 f.close()
+stocks = [stock[:-1] for stock in stocks]
 
 stocks = [[stock, yf.Ticker(stock).history(period="6mo")] for stock in stocks[1:20]]
 
