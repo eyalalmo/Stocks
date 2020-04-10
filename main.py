@@ -27,7 +27,7 @@ stocks = [[stock, yf.Ticker(stock).history(period="6mo")] for stock in stocks[1:
 
 print([stock[0] for stock in stocks])
 
-res = [[stock[0], max(stock[1].Close.array, default=0), min(stock[1].Close.array, default=0)] for stock in stocks if (max(stock[1].Close.array, default=0) > 2*min(stock[1].Close.array, default=0))]
+res = [[stock[0], max(stock[1].Close.array), min(stock[1].Close.array)] for stock in stocks if (max(stock[1].Close.array) > 2*min(stock[1].Close.array))]
 f = open("result.txt", "w+")
 for stock in res:
     f.write(str(stock) + '\n')
